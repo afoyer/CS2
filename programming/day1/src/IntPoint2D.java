@@ -29,3 +29,4 @@ public class IntPoint2D implements IIntPoint2D {
         return (x<<16)+y;
     }
 }
+//Hello!
