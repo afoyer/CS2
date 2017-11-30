@@ -3,8 +3,7 @@ public class IntGrid2D implements IIntGrid2D{
     private int uplefty;
     private int downrightx;
     private int downrighty;
-    private char fill;
-    char[][] grid = new char[3][3];
+    private char[][] grid = new char[3][3];
 
 
     public IntGrid2D(int ulx, int uly, int drx, int dry, char fill ){
