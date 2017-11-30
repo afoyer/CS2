@@ -20,11 +20,11 @@ public class IntGrid2D implements IIntGrid2D{
 
     }
     public void setPoint(IIntPoint2D p, char v){
-        grid[p.getX()+ 1][-(p.getY())+1] = v;
+        grid[p.getX()+ Math.abs(upleftx)][-(p.getY())+Math.abs(uplefty)] = v;
 
     }
     public char getPoint(IIntPoint2D p){
-        return grid[p.getX()+ 1][-(p.getY())+1];
+        return grid[p.getX()+ Math.abs(upleftx)][-(p.getY())+Math.abs(uplefty)];
     }
     public IIntPoint2D getUpperLeftCorner(){
         return new IntPoint2D(upleftx, uplefty);
