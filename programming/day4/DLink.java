@@ -8,7 +8,7 @@ public class DLink<T> implements IList<T>{
 
     public void insert(int idx, T v) {
         boolean appendcheck = false;
-        if (firsttime) {
+        if (size ==0) {
             IDLink<T> first = new Node(v, null, null);
             first.setPrev(first);
             first.setNext(first);
@@ -58,7 +58,7 @@ public class DLink<T> implements IList<T>{
 
     public void append(T v) {
         IDLink<T> first = new Node(v, null, null);
-        if (firsttime) {
+        if (size == 0) {
 
             first.setPrev(first);
             first.setNext(first);
