@@ -58,6 +58,7 @@ fabric.properties
 *.iml
 *.iws
 *.zip
+*.class
 
 # Mac
 .DS_Store
