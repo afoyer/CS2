@@ -73,11 +73,12 @@ public class TreeNode<K,V> {
     }
 
     public int inorder(K[] keys, int nextpos){
-        if(getLeft() != null && getRight() != null){
-        nextpos = getLeft().inorder(keys, nextpos);
-        keys[nextpos] = getKey();
-        nextpos++;
-        return getRight().inorder(keys, nextpos);}
+        if(getLeft() != null && getRight() != null) {
+            nextpos = getLeft().inorder(keys, nextpos);
+            keys[nextpos] = getKey();
+            nextpos++;
+            return getRight().inorder(keys, nextpos);
+        }
         else if (getLeft() != null && getRight() ==null){
             nextpos = getLeft().inorder(keys, nextpos);
             keys[nextpos] = getKey();
