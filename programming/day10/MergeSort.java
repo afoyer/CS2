@@ -1,5 +1,6 @@
 public class MergeSort<T extends  Comparable<T>> implements ISort<T> {
     public void sort(Comparable[] in) {
+        //Edge case
         if (in.length <= 1) {
             return;
         }
@@ -11,6 +12,7 @@ public class MergeSort<T extends  Comparable<T>> implements ISort<T> {
         for (int j  = 0; j< R.length; j++){
             R[j] = in[L.length+j];
         }
+        //Recursion!
         sort(L);
         sort(R);
         merge(L, R, in);
@@ -32,6 +34,7 @@ public class MergeSort<T extends  Comparable<T>> implements ISort<T> {
             }
             merge++;
             }
+        //add remaining stuff if still available
         while (leftp < left.length){
             in[merge] = left[leftp];
             leftp++;
