@@ -12,3 +12,11 @@ IGraphReader.java  - An interface for reading in graph files
 DiGraphReader.java - This file isn't included, please include your day11 implementation
 ISearcher.java     - An interface for classes that provide graph searches.
 graphfile.cs2      - A simple graph file for a basic test
+IQueue.java        - Interface for queues
+IStack.java        - Interface for Stacks
+BFS.java           - Works the Breadth first part of getPath in searcher.java
+DFS.java           - Works the Depth first search part of getPath and pathExists methods in searcher.java
+Arraylist.java     - Simple arraylist data type handler.
+
+
+I probs missed a few things but ¯\_(ツ)_/¯
