@@ -16,13 +16,14 @@ public class Searcher<N,W> implements ISearcher<N,W> {
         DFS pather = new DFS(g,s,e);
         BFS pathe = new BFS(g,s,e);
         IList<INode> test = pather.getPath(s);
-        System.out.println("DFS");
         if(pathExists(g,s,e)) {
+            System.out.println("DFS");
             for (int i = 0; i < test.size(); i++) {
                 System.out.print(test.fetch(i).getValue() + " ");
             }
             System.out.print("\n");
             DoubleLinkList<INode> list = new DoubleLinkList<>();
+            System.out.println("BFS");
             return pathe.getPath(s, list);
         }
         else{

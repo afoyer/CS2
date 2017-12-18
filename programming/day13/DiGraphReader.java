@@ -67,29 +67,11 @@ public class DiGraphReader implements IGraphReader {
         // This code should work without modification once your reader code is working
         IGraphReader r = new DiGraphReader();
         Searcher s = new Searcher();
-        boolean test;
-
-        IGraph<String,Double> g = r.read("graphfile.cs2");
+        IGraph<String,Double> g = r.read("C:\\Users\\Aymeric\\Documents\\CS2\\programming\\day13\\src\\graphfile.cs2");
         IEdge<String,Double>[] edges = g.getEdgeSet();
         for(int i=0; i<edges.length; i++) {
             System.out.println(edges[i].getSource().getValue()+" -> "+edges[i].getDestination().getValue()+"  w: "+edges[i].getWeight());
         }
-        INode<String> start = edges[0].getSource();
-        INode<String> end = edges[4].getDestination();
-//        System.out.println(end.getValue());
-        test = s.pathExists(g, start, end);
-        IList<INode> test2 = s.getPath(g, start, end);
-//        System.out.println(end.getValue());
 
-//        System.out.println(test);
-        System.out.println("BFS");
-        if (s.pathExists(g,start,end)) {
-            for (int i = 0; i < test2.size(); i++) {
-                System.out.print(test2.fetch(i).getValue() + " ");
-            }
-        }
-        else{
-            System.out.println("Error: Path does not exist");
-        }
     }
 }

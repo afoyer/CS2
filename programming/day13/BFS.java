@@ -20,33 +20,41 @@ public class BFS<N,W> {
     public IList<INode> getPath(INode s, DoubleLinkList l) {
         INode<N> cur = s;
         LinkStack<INode> full = new LinkStack();
-        while(!cur.equals(end)){
-            int t = list.size;
-            IEdge r = queue.dequeue();
-            cur = r.getDestination();
-            checked.append(r);
-            IEdge[] sedges = g.getEdgesFrom(cur);
-            for(int o = 0; o < t;o++) {
-                for (int i = 0; i < sedges.length; i++) {
-                    if (sedges[i].getDestination().equals(list.fetch(o))){
+        if(cur.equals(end)){
+            IList<INode> special = new DoubleLinkList<>();
+            special.append(cur);
+            return special;
+        }
+        else {
 
-                    }
-                    else {
-                        queue.enqueue(sedges[i]);
-                        list.append(sedges[i].getDestination());
+            while (!cur.equals(end)) {
+                int t = list.size;
+                IEdge r = queue.dequeue();
+                cur = r.getDestination();
+                checked.append(r);
+                IEdge[] sedges = g.getEdgesFrom(cur);
+                for (int o = 0; o < t; o++) {
+                    for (int i = 0; i < sedges.length; i++) {
+                        if (sedges[i].getDestination().equals(list.fetch(o))) {
+
+                        } else {
+                            queue.enqueue(sedges[i]);
+                            list.append(sedges[i].getDestination());
+                        }
                     }
                 }
             }
-        }
-        full.push(cur);
-        while(!cur.equals(s)){
-            int n = 0;
-            while(!checked.fetch(n).getDestination().equals(cur)){
-                n++;
-            }
-            cur = checked.fetch(n).getSource();
             full.push(cur);
+            while (!cur.equals(s)) {
+                int n = 0;
+                while (!checked.fetch(n).getDestination().equals(cur)) {
+                    n++;
+                }
+                cur = checked.fetch(n).getSource();
+                full.push(cur);
+            }
         }
+
         return full.getStackr();
     }
 }
