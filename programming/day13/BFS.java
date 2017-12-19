@@ -10,11 +10,9 @@ public class BFS<N,W> {
         start = s;
         end = e;
         this.g = g;
-        list.append(s);
         IEdge[] sedges = g.getEdgesFrom(s);
         for(int i = 0; i < sedges.length; i++){
             queue.enqueue(sedges[i]);
-            list.append(sedges[i].getDestination());
         }
     }
     public IList<INode> getPath(INode s, DoubleLinkList l) {
@@ -22,39 +20,37 @@ public class BFS<N,W> {
         LinkStack<INode> full = new LinkStack();
         if(cur.equals(end)){
             IList<INode> special = new DoubleLinkList<>();
-            special.append(cur);
             return special;
         }
-        else {
-
-            while (!cur.equals(end)) {
-                int t = list.size;
-                IEdge r = queue.dequeue();
-                cur = r.getDestination();
-                checked.append(r);
+        while (!cur.equals(end)) {
+            boolean exists = false;
+            IEdge r = queue.dequeue();
+            cur = r.getDestination();
+//            System.out.println(cur.getValue());
+            checked.append(r);
+            for (int i = 0; i < list.size; i++) {
+                if (cur.equals(list.fetch(i))) {
+                    exists = true;
+                }
+            }
+            if (!exists) {
+                list.append(cur);
                 IEdge[] sedges = g.getEdgesFrom(cur);
-                for (int o = 0; o < t; o++) {
                     for (int i = 0; i < sedges.length; i++) {
-                        if (sedges[i].getDestination().equals(list.fetch(o))) {
-
-                        } else {
-                            queue.enqueue(sedges[i]);
-                            list.append(sedges[i].getDestination());
-                        }
+                        queue.enqueue(sedges[i]);
                     }
                 }
-            }
-            full.push(cur);
-            while (!cur.equals(s)) {
-                int n = 0;
-                while (!checked.fetch(n).getDestination().equals(cur)) {
-                    n++;
-                }
-                cur = checked.fetch(n).getSource();
-                full.push(cur);
-            }
-        }
 
+        }
+        full.push(cur);
+        while (!cur.equals(s)) {
+            int n = 0;
+            while (!checked.fetch(n).getDestination().equals(cur)) {
+                n++;
+            }
+            cur = checked.fetch(n).getSource();
+            full.push(cur);
+        }
         return full.getStackr();
     }
 }

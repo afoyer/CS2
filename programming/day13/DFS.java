@@ -20,6 +20,9 @@ public class DFS<N,W> {
     public boolean nodesexists() {
         INode[] arr = g.getNodeSet();
         int goof = 0;
+        if(start == end){
+            return true;
+        }
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == start || arr[i] == end) {
                 goof++;
@@ -33,7 +36,6 @@ public class DFS<N,W> {
     }
 
     public boolean Path(INode s) {
-
 //        System.out.println(s.getValue());
         path.push(s);
         ArrayList<INode> nb = new ArrayList<>();
@@ -82,6 +84,10 @@ public class DFS<N,W> {
     }
 
     public IList getPath(INode s) {
+        if(start == end){
+            DoubleLinkList<INode> special = new DoubleLinkList<>();
+            return special;
+        }
         if (Path(s)) {
             return linklist;
         } else {
