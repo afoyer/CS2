@@ -67,7 +67,7 @@ public class DiGraphReader implements IGraphReader {
         // This code should work without modification once your reader code is working
         IGraphReader r = new DiGraphReader();
         Searcher s = new Searcher();
-        IGraph<String,Double> g = r.read("C:\\Users\\Aymeric\\Documents\\CS2\\programming\\day13\\src\\graphfile.cs2");
+        IGraph<String,Double> g = r.read("graphfile.cs2");
         IEdge<String,Double>[] edges = g.getEdgeSet();
         for(int i=0; i<edges.length; i++) {
             System.out.println(edges[i].getSource().getValue()+" -> "+edges[i].getDestination().getValue()+"  w: "+edges[i].getWeight());
