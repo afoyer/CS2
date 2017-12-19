@@ -20,3 +20,4 @@ Arraylist.java     - Simple arraylist data type handler.
 
 
 I probs missed a few things but ¯\_(ツ)_/¯
+I also messed with the graphfile.
