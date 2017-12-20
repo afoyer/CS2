@@ -17,7 +17,14 @@ public class RingQueue<T> implements IQueue<T>{
 
         }
     }
-
+    public boolean isEmpty(){
+        if (size ==0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     public void enqueue(T v){
         size++;
         T[] temp = (T[]) new Object[queue.length+1];

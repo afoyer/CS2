@@ -66,17 +66,29 @@ public class DiGraphReader implements IGraphReader {
     public static void main(String[] argv) throws Exception {
         // This code should work without modification once your reader code is working
         IGraphReader r = new DiGraphReader();
-        Searcher s = new Searcher();
-        IGraph<String,Double> g = r.read("graphfile.cs2");
+
+        IGraph<String,Double> g = r.read("C:\\Users\\Aymeric\\Documents\\CS2\\programming\\day13\\src\\graphfile.cs2");
         IEdge<String,Double>[] edges = g.getEdgeSet();
         for(int i=0; i<edges.length; i++) {
             System.out.println(edges[i].getSource().getValue()+" -> "+edges[i].getDestination().getValue()+"  w: "+edges[i].getWeight());
         }
-//        INode start =edges[1].getSource();
-//        INode end = edges[7].getDestination();
-//        IList<INode> test = s.getPath(g,start,end);
-//        for(int i = 0; i < test.size(); i++){
-//            System.out.print(test.fetch(i).getValue() + " ");
-//        }
+        INode start =edges[1].getSource();
+        INode end = edges[7].getDestination();
+        DFS s = new DFS(g,start,end);
+        BFS e = new BFS();
+        IList<INode> test = e.getPath(g,start,end);
+        IList<INode> test2 = s.getPath(g,start,end);
+        System.out.println(s.pathExists(g,start,end));
+        System.out.println(e.pathExists(g,start,end));
+        for(int i =0; i < test.size(); i++){
+            System.out.print(test.fetch(i).getValue()+ " ");
+
+        }
+        System.out.println();
+        System.out.println("BFS");
+        for(int i =0; i < test2.size(); i++){
+            System.out.print(test2.fetch(i).getValue()+ " ");
+
+        }
+        }
     }
-}
